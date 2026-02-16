@@ -1,0 +1,44 @@
+# SearchingBinary
+
+> Boutique investment and consultancy firm based in Braga, Portugal. We bridge technology and business through strategic investment, business advisory, and technology advisory.
+
+## About
+
+SearchingBinary was founded on a simple observation: too many companies treat business strategy and technology as separate conversations. We bring them together.
+
+With 21 years of experience across AI, cloud, product, UX, and engineering leadership, we partner with ambitious companies to navigate complexity, aligning investment strategy, business growth, and technical excellence into a single, coherent trajectory.
+
+## Services
+
+### Investment
+Strategic capital allocation for technology-forward companies. We identify ventures where technical innovation meets market timing and back them with more than capital.
+- Venture capital
+- Technical due diligence
+- Portfolio advisory
+
+### Business Advisory
+Clarity for companies at inflection points. From go-to-market to organizational design, we help leaders make decisions that compound over time.
+- Strategy
+- Growth
+- Operations
+
+### Technology Advisory
+21 years across AI, cloud, product, UX, and engineering leadership. We guide technical decisions from architecture to delivery, so teams build the right thing the right way.
+- AI / Machine Learning
+- Cloud architecture
+- Product strategy
+- UX design
+- Software engineering
+
+## Principles
+
+1. **Depth over breadth** - We take on fewer engagements to go deeper. Every client gets senior attention, not a junior team with a playbook.
+2. **Outcomes, not deliverables** - We measure success by what changes in your business, not by the weight of our slide decks.
+3. **Honest perspective** - We tell you what you need to hear, even when it's not what you want to hear. That's what trusted advisors do.
+
+## Contact
+
+- Email: hello@searchingbinary.com
+- Location: Braga, Portugal
+- LinkedIn: https://www.linkedin.com/in/cmartinspt/
+- Website: https://searchingbinary.com

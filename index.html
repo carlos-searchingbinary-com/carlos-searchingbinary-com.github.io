@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SearchingBinary | Investment & Consultancy</title>
-    <meta name="description" content="SearchingBinary bridges technology and business through strategic investment, business advisory, AI consultancy, and QA excellence.">
+    <meta name="description" content="SearchingBinary is a boutique investment and consultancy firm in Braga, Portugal. Strategic investment, business advisory, and technology advisory powered by 21 years of experience in AI, cloud, product, and engineering leadership.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://searchingbinary.com/">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,14 +17,71 @@
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SearchingBinary | Investment & Consultancy">
-    <meta property="og:description" content="Strategic investment, business advisory, and technology advisory. 21 years of experience. Based in Braga, Portugal.">
-    <meta property="og:image" content="https://carlos-searchingbinary-com.github.io/assets/logos/og-image-1200x630.png">
-    <meta property="og:url" content="https://carlos-searchingbinary-com.github.io">
+    <meta property="og:site_name" content="SearchingBinary">
+    <meta property="og:title" content="SearchingBinary | Investment, Business & Technology Advisory">
+    <meta property="og:description" content="Boutique consultancy bridging strategy and technology. Investment, business advisory, and technology advisory with 21 years of experience. Braga, Portugal.">
+    <meta property="og:image" content="https://searchingbinary.com/assets/logos/og-image-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://searchingbinary.com/">
+    <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SearchingBinary | Investment, Business & Technology Advisory">
+    <meta name="twitter:description" content="Boutique consultancy bridging strategy and technology. 21 years of experience in AI, cloud, product, and engineering leadership.">
+    <meta name="twitter:image" content="https://searchingbinary.com/assets/logos/og-image-1200x630.png">
 
     <!-- Theme color -->
     <meta name="theme-color" content="#0a1628">
+
+    <!-- SEO extras -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SearchingBinary">
+    <meta name="geo.region" content="PT-03">
+    <meta name="geo.placename" content="Braga, Portugal">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "SearchingBinary",
+        "description": "Boutique investment and consultancy firm specializing in strategic investment, business advisory, and technology advisory. 21 years of experience across AI, cloud, product, UX, and engineering leadership.",
+        "url": "https://searchingbinary.com",
+        "logo": "https://searchingbinary.com/assets/logos/logo-full-dark-800x200.png",
+        "image": "https://searchingbinary.com/assets/logos/og-image-1200x630.png",
+        "email": "hello@searchingbinary.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Braga",
+            "addressCountry": "PT"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/cmartinspt/"
+        ],
+        "foundingDate": "2024",
+        "knowsAbout": [
+            "Strategic Investment",
+            "Business Advisory",
+            "Technology Advisory",
+            "Artificial Intelligence",
+            "Cloud Architecture",
+            "Product Strategy",
+            "UX Design",
+            "Software Engineering",
+            "Machine Learning"
+        ],
+        "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 41.5518,
+                "longitude": -8.4229
+            },
+            "geoRadius": "10000 km"
+        },
+        "priceRange": "$$$$"
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -823,6 +883,19 @@
         /* ═══════════════════════════════════════════
            SELECTION COLOR
            ═══════════════════════════════════════════ */
+        /* Screen-reader only (SEO + a11y) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         ::selection {
             background: var(--gold-pale);
             color: var(--navy);
@@ -832,19 +905,22 @@
 <body>
 
     <!-- ─── NAVIGATION ─── -->
-    <nav>
-        <a href="#" class="nav-logo">Searching<span>Binary</span></a>
+    <header>
+    <nav aria-label="Main navigation">
+        <a href="#" class="nav-logo" aria-label="SearchingBinary - Home">Searching<span>Binary</span></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+    </header>
 
+    <main>
     <!-- ─── HERO ─── -->
     <section class="hero">
         <p class="hero-eyebrow">Investment &middot; Advisory &middot; Technology</p>
-        <h1>Where strategy meets <em>precision</em></h1>
+        <h1><span class="sr-only">SearchingBinary: </span>Where strategy meets <em>precision</em></h1>
         <p class="hero-subtitle">
             We partner with ambitious companies to navigate complexity, aligning investment strategy,
             business growth, and technical excellence into a single, coherent trajectory.
@@ -1027,6 +1103,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- ─── FOOTER ─── -->
     <footer>
