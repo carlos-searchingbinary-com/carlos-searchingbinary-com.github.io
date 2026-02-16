@@ -122,10 +122,11 @@ POST_TEMPLATE = """<!DOCTYPE html>
 
         .nav-logo {{
             font-family: var(--font-logo);
-            font-size: 1.35rem;
+            font-size: 1.45rem;
+            font-weight: 500;
             color: var(--navy);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }}
         .nav-logo span {{ color: var(--gold); }}
 
@@ -310,7 +311,8 @@ POST_TEMPLATE = """<!DOCTYPE html>
         }}
         .footer-logo {{
             font-family: var(--font-logo);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             color: rgba(250, 248, 244, 0.4);
         }}
         .footer-logo span {{ color: var(--gold); opacity: 0.5; }}
@@ -427,10 +429,11 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         }}
         .nav-logo {{
             font-family: var(--font-logo);
-            font-size: 1.35rem;
+            font-size: 1.45rem;
+            font-weight: 500;
             color: var(--navy);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }}
         .nav-logo span {{ color: var(--gold); }}
         .nav-links {{
@@ -552,7 +555,8 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         }}
         .footer-logo {{
             font-family: var(--font-logo);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             color: rgba(250, 248, 244, 0.4);
         }}
         .footer-logo span {{ color: var(--gold); opacity: 0.5; }}
