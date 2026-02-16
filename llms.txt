@@ -4,9 +4,9 @@
 
 ## About
 
-SearchingBinary was founded on a simple observation: too many companies treat business strategy and technology as separate conversations. We bring them together.
+SearchingBinary was founded in 2023 by two partners with deeply complementary skills. One brings decades of experience in business analysis, requirements engineering, and quality assurance. The other brings technical leadership across AI, cloud, product, and engineering, with a track record as a conference speaker and industry voice.
 
-With 21 years of experience across AI, cloud, product, UX, and engineering leadership, we partner with ambitious companies to navigate complexity, aligning investment strategy, business growth, and technical excellence into a single, coherent trajectory.
+Too many companies treat business strategy and technology as separate conversations. Our partnership exists precisely to bring them together, aligning investment strategy, business growth, and technical excellence into a single, coherent trajectory.
 
 ## Services
 
@@ -17,13 +17,15 @@ Strategic capital allocation for technology-forward companies. We identify ventu
 - Portfolio advisory
 
 ### Business Advisory
-Clarity for companies at inflection points. From go-to-market to organizational design, we help leaders make decisions that compound over time.
+Clarity for companies at inflection points. From requirements engineering to go-to-market strategy, we bring the rigor of structured analysis to every business decision.
 - Strategy
+- Requirements engineering
+- Quality assurance
 - Growth
 - Operations
 
 ### Technology Advisory
-21 years across AI, cloud, product, UX, and engineering leadership. We guide technical decisions from architecture to delivery, so teams build the right thing the right way.
+Deep expertise across AI, cloud, product, UX, and engineering leadership. We guide technical decisions from architecture to delivery, so teams build the right thing the right way.
 - AI / Machine Learning
 - Cloud architecture
 - Product strategy
