@@ -86,7 +86,7 @@ POST_TEMPLATE = """<!DOCTYPE html>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {{ margin: 0; padding: 0; box-sizing: border-box; }}
 
@@ -123,7 +123,7 @@ POST_TEMPLATE = """<!DOCTYPE html>
         .nav-logo {{
             font-family: var(--font-logo);
             font-size: 1.45rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--navy);
             text-decoration: none;
             letter-spacing: -0.01em;
@@ -312,7 +312,7 @@ POST_TEMPLATE = """<!DOCTYPE html>
         .footer-logo {{
             font-family: var(--font-logo);
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 600;
             color: rgba(250, 248, 244, 0.4);
         }}
         .footer-logo span {{ color: var(--gold); opacity: 0.5; }}
@@ -393,7 +393,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {{ margin: 0; padding: 0; box-sizing: border-box; }}
 
@@ -430,7 +430,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         .nav-logo {{
             font-family: var(--font-logo);
             font-size: 1.45rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--navy);
             text-decoration: none;
             letter-spacing: -0.01em;
@@ -556,7 +556,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         .footer-logo {{
             font-family: var(--font-logo);
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 600;
             color: rgba(250, 248, 244, 0.4);
         }}
         .footer-logo span {{ color: var(--gold); opacity: 0.5; }}
