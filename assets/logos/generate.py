@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-FONT_PATH = os.path.join(DIR, "font", "BodoniModa-Regular.ttf")
+FONT_PATH = os.path.join(DIR, "font", "InstrumentSerif-Regular.ttf")
 
 # Brand colors
 NAVY = (10, 22, 40)
