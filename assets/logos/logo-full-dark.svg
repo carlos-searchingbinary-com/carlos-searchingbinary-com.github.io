@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1');
+    </style>
+  </defs>
+  <rect width="800" height="200" fill="#0a1628"/>
+  <text x="400" y="118" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="72" fill="#faf8f4" letter-spacing="-1">Searching<tspan fill="#c8a45e">Binary</tspan></text>
+</svg>
