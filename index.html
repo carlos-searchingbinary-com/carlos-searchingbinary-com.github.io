@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchingBinary — Investment & Consultancy</title>
+    <meta name="description" content="SearchingBinary bridges technology and business through strategic investment, business advisory, AI consultancy, and QA excellence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           RESET & FOUNDATIONS
+           ═══════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a1628;
+            --navy-soft: #1a2a44;
+            --navy-muted: #2d3f5e;
+            --gold: #c8a45e;
+            --gold-light: #e8d5a0;
+            --gold-pale: #f5ecd4;
+            --cream: #faf8f4;
+            --white: #ffffff;
+            --gray-100: #f4f3f1;
+            --gray-200: #e8e6e2;
+            --gray-400: #a09b93;
+            --gray-600: #6b6560;
+            --gray-800: #3a3530;
+            --text: #1a1714;
+            --text-secondary: #5a554f;
+
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           GRAIN OVERLAY — subtle texture
+           ═══════════════════════════════════════════ */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL-TRIGGERED ANIMATIONS
+           ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 244, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 3rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-600);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--ease-out-expo);
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 3rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric accent — diagonal line */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: 8%;
+            width: 1px;
+            height: 140%;
+            background: linear-gradient(to bottom, transparent, var(--gold-light) 30%, var(--gold-light) 70%, transparent);
+            transform: rotate(15deg);
+            opacity: 0.4;
+        }
+
+        /* Floating circle accent */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            right: 12%;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-light);
+            opacity: 0.25;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(10px, -15px) rotate(2deg); }
+            66% { transform: translate(-5px, 10px) rotate(-1deg); }
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3.2rem, 7vw, 6.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            color: var(--navy);
+            max-width: 900px;
+            letter-spacing: -0.03em;
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-out-expo) 0.5s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-top: 2.5rem;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-out-expo) 0.7s forwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 3rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--navy);
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-out-expo) 0.9s forwards;
+            transition: gap 0.3s var(--ease-out-expo);
+        }
+
+        .hero-cta:hover {
+            gap: 1.2rem;
+        }
+
+        .hero-cta .arrow {
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            position: relative;
+            transition: width 0.3s var(--ease-out-expo);
+        }
+
+        .hero-cta:hover .arrow {
+            width: 56px;
+        }
+
+        .hero-cta .arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-right: 1px solid var(--gold);
+            border-top: 1px solid var(--gold);
+            transform: rotate(45deg);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION SHARED
+           ═══════════════════════════════════════════ */
+        section {
+            padding: 7rem 3rem;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            max-width: 700px;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICES
+           ═══════════════════════════════════════════ */
+        .services {
+            background: var(--white);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gray-200) 20%, var(--gray-200) 80%, transparent);
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .services-header .section-divider {
+            margin: 2rem auto;
+        }
+
+        .services-description {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--gray-200);
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--gray-200);
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+            cursor: default;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            background: var(--cream);
+        }
+
+        .service-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--gold-pale);
+            line-height: 1;
+            margin-bottom: 2rem;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-number {
+            color: var(--gold-light);
+        }
+
+        .service-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .service-text {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-tag {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            padding: 0.3rem 0.7rem;
+            border-radius: 2px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .service-card:hover .service-tag {
+            background: var(--gold-pale);
+            color: var(--navy-soft);
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT / PHILOSOPHY
+           ═══════════════════════════════════════════ */
+        .about {
+            position: relative;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .about-left .section-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-intro {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--navy-soft);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-right {
+            padding-top: 2rem;
+        }
+
+        .philosophy-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .philosophy-item:first-child {
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .philosophy-number {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .philosophy-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .philosophy-desc {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           MARQUEE STRIP
+           ═══════════════════════════════════════════ */
+        .marquee-strip {
+            background: var(--navy);
+            padding: 1.2rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-track span {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gold-light);
+            white-space: nowrap;
+            padding: 0 2rem;
+            opacity: 0.7;
+        }
+
+        .marquee-track .dot {
+            font-style: normal;
+            opacity: 0.3;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTACT
+           ═══════════════════════════════════════════ */
+        .contact {
+            background: var(--navy);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 164, 94, 0.08);
+        }
+
+        .contact::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 164, 94, 0.06);
+        }
+
+        .contact-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact .section-label {
+            color: var(--gold);
+        }
+
+        .contact .section-heading {
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-text {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.6);
+            line-height: 1.7;
+            max-width: 440px;
+        }
+
+        .contact-email {
+            display: inline-block;
+            margin-top: 2.5rem;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--gold);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-email:hover::after {
+            opacity: 0.8;
+        }
+
+        .contact-details {
+            padding-top: 1rem;
+        }
+
+        .contact-detail-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-detail-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-detail-value {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.7);
+            line-height: 1.7;
+        }
+
+        .contact-detail-value a {
+            color: rgba(250, 248, 244, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail-value a:hover {
+            color: var(--gold-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-link {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(250, 248, 244, 0.5);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--gold);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(200, 164, 94, 0.1);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: rgba(250, 248, 244, 0.4);
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        .footer-copy {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.25);
+            letter-spacing: 0.03em;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-layout,
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav.scrolled {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-layout {
+                gap: 2.5rem;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           SELECTION COLOR
+           ═══════════════════════════════════════════ */
+        ::selection {
+            background: var(--gold-pale);
+            color: var(--navy);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav>
+        <a href="#" class="nav-logo">Searching<span>Binary</span></a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <p class="hero-eyebrow">Investment &middot; Advisory &middot; Technology</p>
+        <h1>Where strategy meets <em>precision</em></h1>
+        <p class="hero-subtitle">
+            We partner with ambitious companies to navigate complexity — aligning investment strategy,
+            business growth, and technical excellence into a single, coherent trajectory.
+        </p>
+        <a href="#services" class="hero-cta">
+            Explore our practice <span class="arrow"></span>
+        </a>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section class="services" id="services">
+        <div class="services-header reveal">
+            <p class="section-label">What we do</p>
+            <h2 class="section-heading">Four disciplines, one integrated perspective</h2>
+            <div class="section-divider"></div>
+            <p class="services-description">
+                Each practice informs the others. Investment insight sharpens advisory. Technical depth grounds strategy in reality.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-number">01</div>
+                <h3 class="service-title">Investment</h3>
+                <p class="service-text">
+                    Strategic capital allocation for technology-forward companies.
+                    We identify ventures where technical innovation meets market timing —
+                    and back them with more than capital.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Venture</span>
+                    <span class="service-tag">Due Diligence</span>
+                    <span class="service-tag">Portfolio</span>
+                </div>
+            </div>
+
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-number">02</div>
+                <h3 class="service-title">Business Advisory</h3>
+                <p class="service-text">
+                    Clarity for companies at inflection points. From go-to-market
+                    to organizational design, we help leaders make decisions
+                    that compound over time.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Strategy</span>
+                    <span class="service-tag">Growth</span>
+                    <span class="service-tag">Operations</span>
+                </div>
+            </div>
+
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-number">03</div>
+                <h3 class="service-title">AI Consultancy</h3>
+                <p class="service-text">
+                    Practical AI adoption without the hype. We design and implement
+                    machine learning solutions that solve real problems — with
+                    measurable ROI and responsible deployment.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">ML/AI</span>
+                    <span class="service-tag">LLM</span>
+                    <span class="service-tag">MLOps</span>
+                </div>
+            </div>
+
+            <div class="service-card reveal reveal-delay-4">
+                <div class="service-number">04</div>
+                <h3 class="service-title">QA Consultancy</h3>
+                <p class="service-text">
+                    Quality as a strategic advantage. We build testing architectures,
+                    CI/CD pipelines, and quality cultures that let teams ship faster
+                    with confidence.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Automation</span>
+                    <span class="service-tag">CI/CD</span>
+                    <span class="service-tag">Standards</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── MARQUEE ─── -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span>Strategy</span><span class="dot">&bull;</span>
+            <span>Investment</span><span class="dot">&bull;</span>
+            <span>Artificial Intelligence</span><span class="dot">&bull;</span>
+            <span>Quality Assurance</span><span class="dot">&bull;</span>
+            <span>Advisory</span><span class="dot">&bull;</span>
+            <span>Technology</span><span class="dot">&bull;</span>
+            <span>Growth</span><span class="dot">&bull;</span>
+            <span>Innovation</span><span class="dot">&bull;</span>
+            <!-- Duplicate for seamless loop -->
+            <span>Strategy</span><span class="dot">&bull;</span>
+            <span>Investment</span><span class="dot">&bull;</span>
+            <span>Artificial Intelligence</span><span class="dot">&bull;</span>
+            <span>Quality Assurance</span><span class="dot">&bull;</span>
+            <span>Advisory</span><span class="dot">&bull;</span>
+            <span>Technology</span><span class="dot">&bull;</span>
+            <span>Growth</span><span class="dot">&bull;</span>
+            <span>Innovation</span><span class="dot">&bull;</span>
+        </div>
+    </div>
+
+    <!-- ─── ABOUT ─── -->
+    <section class="about" id="about">
+        <div class="about-layout">
+            <div class="about-left reveal">
+                <p class="section-label">Who we are</p>
+                <h2 class="section-heading">Built at the intersection of business and technology</h2>
+                <div class="section-divider"></div>
+                <p class="about-intro">
+                    We believe the best decisions happen when strategic thinking
+                    and technical depth sit at the same table.
+                </p>
+                <p class="about-text">
+                    SearchingBinary was founded on a simple observation: too many companies
+                    treat business strategy and technology as separate conversations.
+                    We bring them together.
+                </p>
+                <p class="about-text">
+                    Our team combines operators, engineers, and investors who have built,
+                    scaled, and advised companies across industries. We don't offer theory —
+                    we offer pattern recognition earned through experience.
+                </p>
+            </div>
+
+            <div class="about-right">
+                <div class="philosophy-item reveal reveal-delay-1">
+                    <p class="philosophy-number">Principle 01</p>
+                    <h3 class="philosophy-title">Depth over breadth</h3>
+                    <p class="philosophy-desc">
+                        We take on fewer engagements to go deeper. Every client gets
+                        senior attention, not a junior team with a playbook.
+                    </p>
+                </div>
+
+                <div class="philosophy-item reveal reveal-delay-2">
+                    <p class="philosophy-number">Principle 02</p>
+                    <h3 class="philosophy-title">Outcomes, not deliverables</h3>
+                    <p class="philosophy-desc">
+                        We measure success by what changes in your business —
+                        not by the weight of our slide decks.
+                    </p>
+                </div>
+
+                <div class="philosophy-item reveal reveal-delay-3">
+                    <p class="philosophy-number">Principle 03</p>
+                    <h3 class="philosophy-title">Honest perspective</h3>
+                    <p class="philosophy-desc">
+                        We'll tell you what you need to hear, even when it's not
+                        what you want to hear. That's what trusted advisors do.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section class="contact" id="contact">
+        <div class="contact-layout">
+            <div class="contact-left reveal">
+                <p class="section-label">Get in touch</p>
+                <h2 class="section-heading">Let's explore what's possible</h2>
+                <p class="contact-text">
+                    Whether you're seeking investment, navigating a strategic decision,
+                    or building your technical capabilities — we'd like to hear from you.
+                </p>
+                <a href="mailto:hello@searchingbinary.com" class="contact-email">hello@searchingbinary.com</a>
+            </div>
+
+            <div class="contact-details reveal reveal-delay-2">
+                <div class="contact-detail-group">
+                    <p class="contact-detail-label">Location</p>
+                    <p class="contact-detail-value">London, United Kingdom</p>
+                </div>
+
+                <div class="contact-detail-group">
+                    <p class="contact-detail-label">Inquiries</p>
+                    <p class="contact-detail-value">
+                        <a href="mailto:hello@searchingbinary.com">hello@searchingbinary.com</a>
+                    </p>
+                </div>
+
+                <div class="contact-detail-group">
+                    <p class="contact-detail-label">Connect</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-logo">Searching<span>Binary</span></div>
+        <p class="footer-copy">&copy; 2026 SearchingBinary. All rights reserved.</p>
+    </footer>
+
+    <!-- ─── MINIMAL JS: Scroll reveals + Nav state ─── -->
+    <script>
+        // Nav scroll state
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Intersection Observer for scroll reveals
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
