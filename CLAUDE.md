@@ -1,0 +1,128 @@
+# SearchingBinary Website — Claude Development Guide
+
+## Project Overview
+
+**SearchingBinary** is a boutique investment and consultancy firm based in Braga, Portugal. This repo is the company website, hosted on GitHub Pages at `searchingbinary.com`.
+
+## Quick Start
+
+```bash
+cd /Users/cmartins-rlabs/Development/PERSONAL/searchingbinary-website
+
+# Preview locally
+open index.html
+
+# Build blog after adding/editing posts
+python3 build-blog.py
+
+# Push to deploy (GitHub Pages auto-deploys from main)
+git add . && git commit -m "description" && git push
+```
+
+## Repository Structure
+
+```
+searchingbinary-website/
+├── CLAUDE.md                    # This file
+├── index.html                   # Main single-page website
+├── favicon.ico                  # Multi-size favicon
+├── robots.txt                   # SEO + AI crawler permissions
+├── sitemap.xml                  # Search engine sitemap
+├── llms.txt                     # AI model context file
+├── build-blog.py                # Blog static generator script
+├── blog/
+│   ├── index.html               # Blog listing page (generated)
+│   ├── posts/                   # Markdown source files (you write these)
+│   │   ├── 2026-01-01-welcome.md
+│   │   └── 2026-02-16-ai-belongs-on-the-edge.md
+│   ├── welcome/index.html       # Generated post page
+│   └── ai-belongs-on-the-edge/  # Generated post page
+└── assets/
+    └── logos/                   # All logo variants + generator
+        ├── generate.py          # Python logo generator
+        ├── font/                # Instrument Serif font
+        ├── logo-full-*.png      # Full wordmark (dark/light/white/transparent)
+        ├── icon-*.png           # SB monogram icons
+        ├── favicon-*.png        # Favicon PNGs
+        ├── og-image-1200x630.png
+        └── apple-touch-icon-180x180.png
+```
+
+## Blog System
+
+### Writing a New Post
+
+1. Create a markdown file in `blog/posts/`:
+```bash
+# Filename format: YYYY-MM-DD-slug-title.md
+vim blog/posts/2026-03-01-my-new-post.md
+```
+
+2. Add frontmatter header:
+```markdown
+---
+title: My Post Title
+description: A one-line summary for SEO and social previews.
+date: 2026-03-01
+author: Carlos Martins
+tags: ai, strategy, cloud
+---
+
+Post content in standard markdown...
+```
+
+3. Build and push:
+```bash
+python3 build-blog.py
+git add . && git commit -m "New post: My Post Title" && git push
+```
+
+### Blog Content Guidelines
+
+- **Voice**: Opinionated, informed, senior perspective. Write from experience, not theory.
+- **No product references**: Do not mention nolit.ai or any specific products being built. Frame insights as industry observations.
+- **No em dashes**: Use commas, periods, or restructure sentences instead.
+- **Tone**: Confident but not arrogant. Accessible but not dumbed down. Think "senior advisor sharing perspective" not "company marketing blog".
+- **Structure**: Strong opening hook, clear section headers (H2), punchy closing line.
+- **SEO**: Each post auto-generates its own `<title>`, meta description, canonical URL, OG tags, and JSON-LD BlogPosting schema.
+- **After adding posts**: Update `sitemap.xml` with the new post URL and date (or enhance build-blog.py to do it automatically).
+
+### What the Build Script Does
+
+`build-blog.py` reads all `.md` files in `blog/posts/`, and generates:
+- `blog/<slug>/index.html` — individual post pages with full SEO
+- `blog/index.html` — blog listing page with all posts (newest first)
+
+Posts are sorted by filename date prefix (newest first).
+
+## Design System
+
+| Element | Value |
+|---------|-------|
+| Fonts | Instrument Serif (display) + DM Sans (body) |
+| Navy | `#0a1628` |
+| Gold | `#c8a45e` |
+| Cream | `#faf8f4` |
+| Style | Clean, editorial, premium boutique consultancy |
+
+## GitHub & Deployment
+
+- **Repo**: `carlos-searchingbinary-com/carlos-searchingbinary-com.github.io`
+- **GitHub account**: `carlos-searchingbinary-com`
+- **Domain**: `searchingbinary.com` (via Cloudflare DNS)
+- **Cloudflare SSL**: Must be set to **Full** (not Flexible) to avoid redirect loops
+- **Deploy**: Automatic on push to `main` via GitHub Pages
+
+## SEO Checklist
+
+The site includes:
+- [x] Meta description, canonical URL, robots meta
+- [x] OG + Twitter Card meta with branded image
+- [x] JSON-LD structured data (ProfessionalService, WebSite, BlogPosting)
+- [x] `robots.txt` allowing all crawlers including AI bots
+- [x] `sitemap.xml`
+- [x] `llms.txt`
+- [x] Google Search Console verified
+- [x] IndexNow submitted (Bing/Yandex/DuckDuckGo)
+- [x] Semantic HTML5 (`<header>`, `<main>`, `<article>`, `<nav>`, `<footer>`)
+- [x] Brand name in sr-only H1 for crawlers
