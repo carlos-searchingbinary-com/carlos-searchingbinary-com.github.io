@@ -712,6 +712,9 @@ def build():
             'tags_html': build_tags_html(tags),
         })
 
+    # Sort by frontmatter date (newest first)
+    posts.sort(key=lambda p: p['date'], reverse=True)
+
     # Build index page
     posts_html = "\n".join(
         POST_ITEM_TEMPLATE.format(**post) for post in posts
