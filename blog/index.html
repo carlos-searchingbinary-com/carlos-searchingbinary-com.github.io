@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | SearchingBinary</title>
+    <meta name="description" content="Insights on investment, business strategy, AI, cloud, and technology leadership from SearchingBinary.">
+    <link rel="canonical" href="https://searchingbinary.com/blog/">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logos/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/logos/apple-touch-icon-180x180.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog | SearchingBinary">
+    <meta property="og:description" content="Insights on investment, business strategy, AI, cloud, and technology leadership.">
+    <meta property="og:url" content="https://searchingbinary.com/blog/">
+    <meta property="og:site_name" content="SearchingBinary">
+    <meta property="og:image" content="https://searchingbinary.com/assets/logos/og-image-1200x630.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0a1628">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0a1628;
+            --navy-soft: #1a2a44;
+            --gold: #c8a45e;
+            --gold-light: #e8d5a0;
+            --gold-pale: #f5ecd4;
+            --cream: #faf8f4;
+            --white: #ffffff;
+            --gray-100: #f4f3f1;
+            --gray-200: #e8e6e2;
+            --gray-400: #a09b93;
+            --gray-600: #6b6560;
+            --text: #1a1714;
+            --text-secondary: #5a554f;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-sans); color: var(--text); background: var(--cream); line-height: 1.6; }
+
+        nav {
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-600);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--navy); }
+
+        .blog-header {
+            max-width: 900px;
+            margin: 5rem auto 4rem;
+            padding: 0 2rem;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .blog-header h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+        .section-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .posts-list {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
+        }
+
+        .post-item {
+            display: block;
+            text-decoration: none;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            transition: padding-left 0.4s var(--ease-out-expo);
+        }
+        .post-item:first-child {
+            border-top: 1px solid var(--gray-200);
+        }
+        .post-item:hover {
+            padding-left: 1rem;
+        }
+
+        .post-item-date {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-item-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+        }
+        .post-item:hover .post-item-title {
+            color: var(--gold);
+        }
+
+        .post-item-desc {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .post-item-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+        .post-tag {
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+        }
+
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(200, 164, 94, 0.1);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: rgba(250, 248, 244, 0.4);
+        }
+        .footer-logo span { color: var(--gold); opacity: 0.5; }
+        .footer-copy {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.25);
+        }
+
+        ::selection { background: var(--gold-pale); color: var(--navy); }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .blog-header, .posts-list { padding: 0 1.5rem; }
+            .blog-header { margin-top: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="SearchingBinary - Home">Searching<span>Binary</span></a>
+        <ul class="nav-links">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="blog-header">
+            <p class="section-label">Insights</p>
+            <h1>Thoughts on strategy, technology, and building</h1>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="posts-list">
+            <a href="/blog/welcome/" class="post-item">
+    <p class="post-item-date">January 01, 2026</p>
+    <h2 class="post-item-title">Welcome to SearchingBinary</h2>
+    <p class="post-item-desc">Introducing our consultancy and what we stand for.</p>
+    <div class="post-item-tags">
+        <span class="post-tag">announcement</span>
+<span class="post-tag">company</span>
+    </div>
+</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">Searching<span>Binary</span></div>
+        <p class="footer-copy">&copy; 2026 SearchingBinary. All rights reserved.</p>
+    </footer>
+</body>
+</html>
