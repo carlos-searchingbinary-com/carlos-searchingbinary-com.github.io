@@ -31,6 +31,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 POSTS_DIR = os.path.join(DIR, "blog", "posts")
 BLOG_DIR = os.path.join(DIR, "blog")
 SITE_URL = "https://searchingbinary.com"
+SITEMAP_PATH = os.path.join(DIR, "sitemap.xml")
 
 # ─── Brand colors & styles (matching main site) ───
 
@@ -53,6 +54,7 @@ POST_TEMPLATE = """<!DOCTYPE html>
     <meta property="og:url" content="{canonical_url}">
     <meta property="og:site_name" content="SearchingBinary">
     <meta property="og:image" content="{site_url}/assets/logos/og-image-1200x630.png">
+    <meta property="og:image:alt" content="{title} | SearchingBinary">
     <meta property="article:published_time" content="{iso_date}">
     <meta property="article:author" content="{author}">
     <meta name="twitter:card" content="summary_large_image">
@@ -81,6 +83,18 @@ POST_TEMPLATE = """<!DOCTYPE html>
         }},
         "mainEntityOfPage": "{canonical_url}",
         "keywords": "{tags}"
+    }}
+    </script>
+
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {{"@type": "ListItem", "position": 1, "name": "Home", "item": "{site_url}/"}},
+            {{"@type": "ListItem", "position": 2, "name": "Blog", "item": "{site_url}/blog/"}},
+            {{"@type": "ListItem", "position": 3, "name": "{title}", "item": "{canonical_url}"}}
+        ]
     }}
     </script>
 
@@ -385,6 +399,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
     <meta property="og:url" content="{site_url}/blog/">
     <meta property="og:site_name" content="SearchingBinary">
     <meta property="og:image" content="{site_url}/assets/logos/og-image-1200x630.png">
+    <meta property="og:image:alt" content="SearchingBinary Blog - Insights on investment, strategy, AI, and technology">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0a1628">
 
@@ -650,6 +665,45 @@ def build_tags_html(tags_str):
     return "\n".join(f'<span class="post-tag">{tag}</span>' for tag in tags if tag)
 
 
+def build_sitemap(posts):
+    """Generate sitemap.xml from posts list (newest first)."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    newest_date = posts[0]['date'] if posts else today
+
+    entries = [
+        f"""    <url>
+        <loc>{SITE_URL}/</loc>
+        <lastmod>{today}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>""",
+        f"""    <url>
+        <loc>{SITE_URL}/blog/</loc>
+        <lastmod>{newest_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>""",
+    ]
+
+    for post in posts:
+        entries.append(f"""    <url>
+        <loc>{SITE_URL}/blog/{post['slug']}/</loc>
+        <lastmod>{post['date']}</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>""")
+
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += '\n'.join(entries) + '\n'
+    sitemap += '</urlset>\n'
+
+    with open(SITEMAP_PATH, 'w') as f:
+        f.write(sitemap)
+
+    print(f"  Built: sitemap.xml ({len(posts) + 2} URLs)")
+
+
 def build():
     """Build all blog pages."""
     md = markdown.Markdown(extensions=['extra', 'codehilite', 'toc'])
@@ -730,6 +784,10 @@ def build():
         f.write(index_html)
 
     print(f"  Built: blog/index.html ({len(posts)} posts)")
+
+    # Auto-generate sitemap
+    build_sitemap(posts)
+
     print(f"\nDone! {len(posts)} post(s) generated.")
 
 
